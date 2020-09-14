@@ -1,18 +1,33 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>{{ message }}</h1>
+    <div v-for="professor in professors">
+      <h2> {{professor.name}}</h2>
+      <p> {{professor.school}} </p>
+      <p> {{professor.title}} </p>
+      <p> {{professor.department}} </p>
+    </div>
   </div>
 </template>
 
-<script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+<style>
+</style>
 
+<script>
+import axios from "axios";
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
-}
+  data: function () {
+    return {
+      message: "Welcome to Rate My Professor!",
+      professors: [],
+    };
+  },
+  created: function () {
+    axios.get("/api/professors").then((response) => {
+      console.log("All Professors:", response.data);
+      this.professors = response.data;
+    });
+  },
+  methods: {},
+};
 </script>
