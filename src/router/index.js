@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
-import ReviewsNew from '../views/Reviewsnew.vue';
+import ReviewsNew from '../views/ReviewsNew.vue';
+import ReviewsShow from '../views/ReviewsShow.vue';
 
 Vue.use(VueRouter);
 
@@ -15,6 +16,11 @@ const routes = [
     path: '/reviews/new',
     name: 'reviews-new',
     component: ReviewsNew
+  },
+  {
+    path: '/reviews/:id',
+    name: 'reviews-show',
+    component: ReviewsShow
   },
   {
     path: '/about',

@@ -33,9 +33,9 @@ export default {
           console.log("Successfully added", response.data);
           // this.reviews.push(response.data);
         })
-        .then((response) => {
-          // this.$router.push("/professor/:id");
-        })
+        // .then((response) => {
+        //   this.$router.push("/professor/:id");
+        // })
         .catch((error) => {
           console.log(error.response.data.errors);
           this.errors = error.response.data.errors;
