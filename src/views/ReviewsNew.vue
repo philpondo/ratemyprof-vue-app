@@ -2,7 +2,30 @@
   <div class="reviews-new">
     <h1>Add a Review</h1>
     <div>
-
+      <form v-on:submit.prevent="createReview">
+        <div>
+          <label>Professor ID: </label>
+          <input type="text" 
+          class="form-control"
+          v-model="newReviewProfessorId"
+        />
+        </div>
+        <div>
+          <label>Rating: </label>
+          <input type="text" 
+          class="form-control"
+          v-model="newReviewRating"
+        />
+        </div>
+        <div>
+          <label>Text: </label>
+          <input type="text" 
+          class="form-control"
+          v-model="newReviewText"
+        />
+        </div>
+        <button>Submit</button>
+      </form>
     </div>
   </div>
 </template>
@@ -33,9 +56,9 @@ export default {
           console.log("Successfully added", response.data);
           // this.reviews.push(response.data);
         })
-        // .then((response) => {
-        //   this.$router.push("/professor/:id");
-        // })
+        .then((response) => {
+          this.$router.push("/");
+        })
         .catch((error) => {
           console.log(error.response.data.errors);
           this.errors = error.response.data.errors;
