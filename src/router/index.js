@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import ReviewsNew from '../views/ReviewsNew.vue';
 import ReviewsShow from '../views/ReviewsShow.vue';
+import ReviewsEdit from '../views/ReviewsEdit.vue';
 
 Vue.use(VueRouter);
 
@@ -21,6 +22,11 @@ const routes = [
     path: '/reviews/:id',
     name: 'reviews-show',
     component: ReviewsShow
+  },
+  {
+    path: '/reviews/:id/edit',
+    name: 'reviews-edit',
+    component: ReviewsEdit
   },
   {
     path: '/about',
