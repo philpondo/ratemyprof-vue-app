@@ -21,7 +21,7 @@
               class="img thumbnail"
               src="/default-user.png"
               alt="Card image cap"
-              width="200"
+              width="100"
             />
             <h5 class="card-title">{{ professor.name }}</h5>
             <p class="card-text">{{ professor.school }}</p>
@@ -41,12 +41,15 @@
 </template>
 
 <style>
-.card {
+.card-deck .card {
+  margin-right: 40px;
+  margin-left: 50px;
+  margin-top: 15px;
   min-width: 25%;
   max-width: 25%;
-  margin-left: 30px;
-  margin-right: 30px;
-  margin-top: 15px;
+}
+.img {
+  margin-bottom: 15px;
 }
 </style>
 
@@ -57,7 +60,7 @@ export default {
   mixins: [Vue2Filters.mixin],
   data: function() {
     return {
-      message: "Welcome to Rate My Professor!",
+      message: "All Professors",
       professors: [],
       attributeFilter: "",
     };
