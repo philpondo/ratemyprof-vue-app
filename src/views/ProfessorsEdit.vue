@@ -1,50 +1,43 @@
 <template>
   <div class="professors-edit">
     <h1>{{ message }}</h1>
-    <div>
+    <div class="container">
       <form v-on:submit.prevent="editProf">
-        <div>
+        <div class="form-group">
           <label>Name: </label>
-          <input type="text" 
-          class="form-control"
-          v-model="professor.name"
-        />
+          <input type="text" class="form-control" v-model="professor.name" />
         </div>
-        <div>
+        <div class="form-group">
           <label>Title: </label>
-          <input type="text" 
-          class="form-control"
-          v-model="professor.title"
-        />
+          <input type="text" class="form-control" v-model="professor.title" />
         </div>
-        <div>
+        <div class="form-group">
           <label>School: </label>
-          <input type="text" 
-          class="form-control"
-          v-model="professor.school"
-        />
+          <input type="text" class="form-control" v-model="professor.school" />
         </div>
-        <div>
+        <div class="form-group">
           <label>Department: </label>
-          <input type="text" 
-          class="form-control"
-          v-model="professor.department"
-        />
+          <input
+            type="text"
+            class="form-control"
+            v-model="professor.department"
+          />
         </div>
-        <button>Submit</button>
-        <button v-on:click="destroyProf()">Delete</button>
+        <button class="btn bg-dark text-white">Submit</button>
+        <button class="btn bg-dark text-white" v-on:click="destroyProf()">
+          Delete
+        </button>
       </form>
     </div>
   </div>
 </template>
 
-<style>
-</style>
+<style></style>
 
 <script>
 import axios from "axios";
 export default {
-  data: function () {
+  data: function() {
     return {
       message: "Edit Professor Details:",
       name: "",
@@ -55,14 +48,14 @@ export default {
       professor: {},
     };
   },
-  created: function () {
+  created: function() {
     axios.get(`api/professors/${this.$route.params.id}`).then((response) => {
       console.log(response.data.professor);
       this.professor = response.data.professor;
     });
   },
   methods: {
-    editProf: function (professor) {
+    editProf: function(professor) {
       var params = {
         name: this.professor.name,
         title: this.professor.title,
@@ -79,7 +72,7 @@ export default {
           this.errors = error.response.data.errors;
         });
     },
-    destroyProf: function () {
+    destroyProf: function() {
       if (confirm("Are you sure you want to delete this professor?")) {
         axios
           .delete(`/api/professors/${this.professor.id}`)

@@ -1,26 +1,54 @@
 <template>
   <div class="home">
     <h1>{{ message }}</h1>
-    <input
-      v-model="attributeFilter"
-      list="attributes"
-      type="text"
-      class="form-control"
-      placeholder="Search"
-    />
-    <div v-for="professor in filterBy(professors, attributeFilter)">
-      <h2>{{ professor.name }}</h2>
-      <p>{{ professor.school }}</p>
-      <p>{{ professor.title }}</p>
-      <p>{{ professor.department }}</p>
-      <router-link v-bind:to="`/professors/${professor.id}`">
-        View this Professor
-      </router-link>
+    <div class="container">
+      <input
+        v-model="attributeFilter"
+        list="attributes"
+        type="text"
+        class="form-control"
+        placeholder="Search"
+      />
+    </div>
+    <div class="container">
+      <div class="card-deck">
+        <div
+          class="card"
+          v-for="professor in filterBy(professors, attributeFilter)"
+        >
+          <div class="card-body">
+            <img
+              class="img thumbnail"
+              src="/default-user.png"
+              alt="Card image cap"
+              width="200"
+            />
+            <h5 class="card-title">{{ professor.name }}</h5>
+            <p class="card-text">{{ professor.school }}</p>
+            <p class="card-text">{{ professor.title }}</p>
+            <p class="card-text">{{ professor.department }} Department</p>
+            <router-link
+              class="btn bg-dark text-white"
+              v-bind:to="`/professors/${professor.id}`"
+            >
+              View this Professor
+            </router-link>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
-<style></style>
+<style>
+.card {
+  min-width: 25%;
+  max-width: 25%;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 15px;
+}
+</style>
 
 <script>
 import axios from "axios";
