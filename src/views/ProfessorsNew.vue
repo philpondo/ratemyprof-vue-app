@@ -1,26 +1,39 @@
 <template>
   <div class="professors-new">
     <h1>{{ message }}</h1>
-    <form method="dialog">
-      <h2>Professor Details</h2>
-      <p>Name: <input type="text" v-model="name"> </p>
-      <p>Title: <input type="text" v-model="title"> </p>
-      <p>School: <input type="text" v-model="school"> </p>
-      <p>Department: <input type="text" v-model="department"> </p>
-      <div>
-        <button v-on:click="createProf()">Submit</button>
-      </div>
-    </form>
+    <div class="container">
+      <form method="dialog">
+        <h2>Professor Details</h2>
+        <div class="form-group">
+          <label>Name: </label>
+          <input type="text" class="form-control" v-model="name" />
+        </div>
+        <div class="form-group">
+          <label>Title: </label>
+          <input type="text" class="form-control" v-model="title" />
+        </div>
+        <div class="form-group">
+          <label>School: </label>
+          <input type="text" class="form-control" v-model="school" />
+        </div>
+        <div class="form-group">
+          <label>Department: </label>
+          <input type="text" class="form-control" v-model="department" />
+        </div>
+        <div>
+          <button v-on:click="createProf()">Submit</button>
+        </div>
+      </form>
+    </div>
   </div>
 </template>
 
-<style>
-</style>
+<style></style>
 
 <script>
 import axios from "axios";
 export default {
-  data: function () {
+  data: function() {
     return {
       message: "Add a new Professor!",
       name: "",
@@ -29,9 +42,9 @@ export default {
       department: "",
     };
   },
-  created: function () {},
+  created: function() {},
   methods: {
-    createProf: function () {
+    createProf: function() {
       var params = {
         name: this.name,
         title: this.title,
