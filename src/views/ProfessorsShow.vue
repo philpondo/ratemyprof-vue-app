@@ -5,8 +5,14 @@
     <p>{{ professor.title }}</p>
     <p>{{ professor.school }}</p>
     <p>{{ professor.department }}</p>
-    <router-link v-bind:to="`/professors/${professor.id}/edit`">
+    <router-link
+      class="btn bg-dark text-white"
+      v-bind:to="`/professors/${professor.id}/edit`"
+    >
       Edit this Professor
+    </router-link>
+    <router-link class="btn bg-dark text-white" v-bind:to="`/reviews/new`">
+      Leave a Review for this Professor
     </router-link>
     <h2>Reviews:</h2>
     <div v-for="review in reviews">
