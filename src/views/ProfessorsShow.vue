@@ -97,10 +97,7 @@ export default {
         .post("/api/reviews", params)
         .then((response) => {
           console.log("Successfully added", response.data);
-          // this.reviews.push(response.data);
-        })
-        .then((response) => {
-          this.reviews;
+          this.reviews.push(response.data);
         })
         .catch((error) => {
           console.log(error.response.data.errors);
