@@ -1,15 +1,11 @@
 <template>
   <div class="reviews-edit">
-    <h1>Add a Review</h1>
-    <div>
+    <h1>Edit Review</h1>
+    
+    <div class="container p-4" style="border:1px solid">
+      
       <form v-on:submit.prevent="editReview">
-        <div>
-          <label>Professor ID: </label>
-          <input type="text" 
-          class="form-control"
-          v-model="review.professor_id"
-        />
-        </div>
+        <h4>Professor: {{ review.name }}</h4>
         <div>
           <label>Rating: </label>
           <input type="text" 
@@ -17,13 +13,17 @@
           v-model="review.rating"
         />
         </div>
+        <br>
         <div>
           <label>Text: </label>
           <textarea type="text" v-model="review.text"></textarea>
         </div>
-        <button>Submit</button>
+        <button class="btn bg-dark text-white">Submit</button>
+        <button class="btn bg-dark text-white" v-on:click="destroyReview()">Delete</button>
       </form>
+  
     </div>
+    
   </div>
 </template>
 
@@ -65,6 +65,14 @@ export default {
           console.log(error.response.data.errors);
           this.errors = error.response.data.errors;
         });
+    },
+    destroyReview: function () {
+      if (confirm("Are you sure you want to delete this review?")) {
+        axios.delete(`/api/reviews/${this.review.id}`).then((response) => {
+          console.log("Successfully destroyed", response.data);
+          this.$router.push("/");
+        });
+      }
     },
   },
 };

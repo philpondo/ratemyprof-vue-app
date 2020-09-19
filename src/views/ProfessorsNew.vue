@@ -1,16 +1,15 @@
 <template>
   <div class="professors-new">
     <h1>{{ message }}</h1>
-    <div class="container">
+    <div class="container p-4 mb-4" style="border:1px solid">
       <form method="dialog">
-        <h2>Professor Details</h2>
         <div class="form-group">
-          <label>Name: </label>
+          <label>Professor Name: </label>
           <input type="text" class="form-control" v-model="name" />
         </div>
         <div class="form-group">
           <label>Title: </label>
-          <input type="text" class="form-control" v-model="title" />
+          <input type="text" class="form-control" v-model="title" placeholder="Associate, Adjunct, etc." />
         </div>
         <div class="form-group">
           <label>School: </label>
@@ -33,7 +32,7 @@
 <script>
 import axios from "axios";
 export default {
-  data: function() {
+  data: function () {
     return {
       message: "Add a new Professor!",
       name: "",
@@ -42,9 +41,9 @@ export default {
       department: "",
     };
   },
-  created: function() {},
+  created: function () {},
   methods: {
-    createProf: function() {
+    createProf: function () {
       var params = {
         name: this.name,
         title: this.title,
