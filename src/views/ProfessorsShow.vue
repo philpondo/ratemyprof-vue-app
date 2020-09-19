@@ -27,7 +27,7 @@
       <form>
         <div class="form-group">
           <label>Rating: </label>
-          <select class="form-control">
+          <select class="form-control" v-model="newReviewRating">
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -37,8 +37,11 @@
         </div>
         <div class="form-group">
           <label>Review: </label>
-          <textarea class="form-control" />
+          <textarea class="form-control" v-model="newReviewText" />
         </div>
+        <button class="btn bg-dark text-white" v-on:click="createReview()">
+          Submit
+        </button>
       </form>
     </div>
     <h3>Reviews:</h3>
