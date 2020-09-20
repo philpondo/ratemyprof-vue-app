@@ -22,34 +22,58 @@
         </div>
       </div>
     </div>
-    <h3>Leave a Review:</h3>
-    <div class="container">
-      <form>
-        <div class="form-group">
-          <label>Rating: </label>
-          <select class="form-control" v-model="newReviewRating">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Review: </label>
-          <textarea class="form-control" v-model="newReviewText" />
-        </div>
-        <button class="btn bg-dark text-white" v-on:click="createReview()">
-          Submit
-        </button>
-      </form>
+
+    <div class="container p-4 mb-4" style="border:1px solid">
+      <h3>Leave a Review:</h3>
+      <div class="container">
+        <form>
+          <div class="form-group">
+            <label>Rating: </label>
+            <select class="form-control" v-model="newReviewRating">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Review: </label>
+            <textarea class="form-control" v-model="newReviewText" />
+          </div>
+          <button class="btn bg-dark text-white" v-on:click="createReview()">
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
+
     <h3>Reviews:</h3>
+
     <div class="container">
-      <div v-for="review in reviews">
+      <div class="card w-100" v-for="review in reviews">
+        <div class="card-body">
+          <h5 class="card-title">Rating: {{ review.rating }}</h5>
+          <p class="card-text">{{ review.text }}</p>
+          <router-link
+            class="btn bg-dark text-white"
+            v-bind:to="`/reviews/${review.id}/edit`"
+          >
+            Edit
+          </router-link>
+        </div>
+      </div>
+
+      <!-- <div v-for="review in reviews">
         <p>Rating: {{ review.rating }}</p>
         <p>{{ review.text }}</p>
-      </div>
+        <router-link
+          class="btn bg-dark text-white"
+          v-bind:to="`/reviews/${review.id}/edit`"
+        >
+        Edit
+        </router-link>
+      </div> -->
     </div>
   </div>
 </template>
@@ -60,6 +84,12 @@
   width: 300px;
 }
 .profile-info {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+.cardreview {
   display: flex;
   justify-content: center;
   flex-direction: row;
