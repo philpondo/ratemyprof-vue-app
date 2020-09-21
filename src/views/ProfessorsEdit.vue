@@ -66,7 +66,7 @@ export default {
         .put(`/api/professors/${this.professor.id}`, params)
         .then((response) => {
           console.log(response.data);
-          this.$router.push(`/professors/${this.professor.id}`);
+          this.$router.push(`/api/professors/${this.professor.id}`);
         })
         .catch((error) => {
           this.errors = error.response.data.errors;
