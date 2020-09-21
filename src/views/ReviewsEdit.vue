@@ -60,7 +60,7 @@ export default {
         //   this.reviews.push(response.data);
         // })
         .then((response) => {
-          this.$router.push(`/reviews/${this.review.id}`);
+          this.$router.push(`/professors/${this.review.professor_id}`);
         })
         .catch((error) => {
           console.log(error.response.data.errors);
