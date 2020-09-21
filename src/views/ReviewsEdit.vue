@@ -1,44 +1,45 @@
 <template>
   <div class="reviews-edit">
     <h1>Edit Review</h1>
-    
-    <div class="container p-4" style="border:1px solid">
-      
+
+    <div class="container" style="border-secondary">
       <form v-on:submit.prevent="editReview">
-        <h4>Professor: {{ review.name }}</h4>
         <div>
           <label>Rating: </label>
-          <input type="text" 
-          class="form-control"
-          v-model="review.rating"
-        />
+          <input type="text" class="form-control" v-model="review.rating" />
         </div>
-        <br>
+        <br />
         <div>
           <label>Text: </label>
-          <textarea type="text" v-model="review.text"></textarea>
+          <textarea
+            type="text"
+            class="form-control"
+            v-model="review.text"
+          ></textarea>
         </div>
-        <button class="btn bg-dark text-white">Submit</button>
-        <button class="btn bg-dark text-white" v-on:click="destroyReview()">Delete</button>
+        <div class="container p-4">
+          <button class="btn bg-dark text-white">Submit</button>
+          <button class="btn bg-dark text-white" v-on:click="destroyReview()">
+            Delete
+          </button>
+        </div>
       </form>
-  
     </div>
-    
   </div>
 </template>
 
-<style>
-</style>
+<style></style>
 
 <script>
 import axios from "axios";
 export default {
-  data: function () {
+  data: function() {
     return {
       review: {},
+      professor: {},
     };
   },
-  created: function () {
+  created: function() {
     axios.get(`/api/reviews/${this.$route.params.id}`).then((response) => {
       console.log(response.data);
       this.review = response.data;
@@ -46,7 +47,7 @@ export default {
     });
   },
   methods: {
-    editReview: function () {
+    editReview: function() {
       var params = {
         professor_id: this.review.professor_id,
         rating: this.review.rating,
@@ -66,7 +67,7 @@ export default {
           this.errors = error.response.data.errors;
         });
     },
-    destroyReview: function () {
+    destroyReview: function() {
       if (confirm("Are you sure you want to delete this review?")) {
         axios.delete(`/api/reviews/${this.review.id}`).then((response) => {
           console.log("Successfully destroyed", response.data);

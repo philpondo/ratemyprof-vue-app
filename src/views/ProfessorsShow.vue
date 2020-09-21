@@ -23,7 +23,7 @@
       </div>
     </div>
 
-    <div class="container p-4 mb-4" style="border:1px solid">
+    <div class="container p-4 mb-4">
       <h3>Leave a Review:</h3>
       <div class="container">
         <form>
